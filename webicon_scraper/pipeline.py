@@ -21,11 +21,15 @@ class FavIconPipeline(FilesPipeline):
     def file_path(self, request, response=None, info=None, *, item=None):
         super().file_path(request, response, info, item=item)
         file_name = request.url.split("/")[-1]
-        return f"./assets/data/{file_name}"
+        return f"./results/{file_name}.ico"
 
     def process_item(self, item, spider):
-        requests = list(self.get_media_requests(item, spider))
+        requests = list(self.get_icon_requests(item, spider))
         for request in requests:
             # Mock file download or response processing
             file_path = self.file_path(request)
+            if "icon_bytes" in item:
+                with open(file_path, "wb") as icon_writer:
+                    icon_writer.write(item["icon_bytes"])
+                    icon_writer.close()
         return item

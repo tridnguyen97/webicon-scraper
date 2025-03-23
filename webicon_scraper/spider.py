@@ -12,7 +12,7 @@ class MultiSpider(Spider):
             yield Request(url=icon_url, callback=self.parse)
 
     def parse(self, response):
-        yield {"icon_url": response.url}
+        yield {"icon_url": response.url, "icon_bytes": response.body}
 
 
 class TestSpider(Spider):
