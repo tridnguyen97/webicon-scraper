@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "webicon-scraper"
+version = "0.1.0"
+description = "Scrapping web icon from a list"
+authors = ["tridn <tridnguyen97@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "webicon_scraper"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.32.3"
+scrapy = "^2.12.0"
+
+[tool.poetry.scripts]
+scraper = "webicon_scraper.main:run" 
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
