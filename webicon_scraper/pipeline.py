@@ -21,9 +21,6 @@ class FavIconPipeline(FilesPipeline):
     def file_path(self, request, response=None, info=None, *, item=None):
         super().file_path(request, response, info, item=item)
         file_name = request.url.split("/")[-1]
-        import pdb
-
-        pdb.set_trace()
         return f"./assets/data/{file_name}"
 
     def process_item(self, item, spider):
@@ -31,5 +28,4 @@ class FavIconPipeline(FilesPipeline):
         for request in requests:
             # Mock file download or response processing
             file_path = self.file_path(request)
-            print(f"File would be saved at: {file_path}")
         return item
