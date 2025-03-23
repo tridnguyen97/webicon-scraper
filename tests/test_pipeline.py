@@ -9,7 +9,7 @@ class TestPipeline(unittest.TestCase):
     def setUp(self):
         # Mock the Scrapy crawler and settings
         self.img_test_url = "https://cdn.jsdelivr.net/gh/belaviyo/save-images@1.0.0/test/simples/2/text.png"
-        self.store_uri = "./assets"
+        self.store_uri = "file:./assets"
         self.spider = None
         settings = Settings(
             {"FILES_STORE": self.store_uri}
